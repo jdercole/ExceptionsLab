@@ -21,14 +21,18 @@ public class Challenge1 {
     // this method responsible for output
     public static void main(String[] args) {
         Challenge1 app = new Challenge1();
-        try {
-        String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
-        String lastName = app.extractLastName(fullName);
-        String msg = "Your last name is: " + lastName;
-        JOptionPane.showMessageDialog(null, msg);
-        } catch (IllegalArgumentException iae) {
-            JOptionPane.showMessageDialog(null, iae.getMessage());
-        }
+        boolean isValid = false;
+        do {
+            try {
+                String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
+                String lastName = app.extractLastName(fullName);
+                String msg = "Your last name is: " + lastName;
+                JOptionPane.showMessageDialog(null, msg);
+                isValid = true;
+            } catch (IllegalArgumentException iae) {
+                JOptionPane.showMessageDialog(null, iae.getMessage());
+            }
+        } while (!isValid);
     }
     
     // write the code to extract the lastName from the fullName
@@ -37,7 +41,6 @@ public class Challenge1 {
     // it there.
     public String extractLastName(String fullName) throws IllegalArgumentException {
         String lastName = null;
-        
         // Your code goes here.
         if (fullName == null || fullName.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty!");
@@ -47,9 +50,15 @@ public class Challenge1 {
             throw new IllegalArgumentException("Name cannot contain numbers!");
         }
         
+        if (!fullName.contains(" ")) {
+            throw new IllegalArgumentException("Please include a first and last name!");
+        }
         
-        
-        return lastName;
+//      int lastNameIndex = fullName.indexOf(" ");
+//      lastName = fullName.substring(lastNameIndex);
+
+        String[] nameArray = fullName.split("\\s");
+        return nameArray[nameArray.length - 1];
     }
 
 }
