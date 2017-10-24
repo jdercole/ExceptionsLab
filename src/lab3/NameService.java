@@ -18,7 +18,7 @@ public class NameService {
      * @throws CustomValidationException if fullName is null or empty or has
      * fewer than two parts
      */
-    public String extractLastName(String fullName) throws CustomValidationException {
+    public String extractLastName(String fullName) throws IllegalArgumentException {
         
           // write your code here to extract the lastName and store in the
         // above local variable

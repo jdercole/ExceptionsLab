@@ -13,11 +13,11 @@ public class CustomValidationException extends IllegalArgumentException {
     }
 
     public CustomValidationException(String s) {
-        super(s);
+        super(errMsg);
     }
 
     public CustomValidationException(String message, Throwable cause) {
-        super(message, cause);
+        super(errMsg, cause);
     }
 
     public CustomValidationException(Throwable cause) {
