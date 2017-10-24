@@ -53,7 +53,7 @@ public class Employee {
         return daysVacation;
     }
 
-    public final void setDaysVacation(int daysVacation) {
+    public final void setDaysVacation(int daysVacation) throws IllegalArgumentException {
         if (daysVacation < 0 || daysVacation > 30) {
             throw new IllegalArgumentException("Vacation days must be within a valid range!");
         }
@@ -84,7 +84,7 @@ public class Employee {
      * Mutates the lastName.
      * @param lastName - cannot be null or empty
      */
-    public final void setLastName(String lastName) {
+    public final void setLastName(String lastName) throws IllegalArgumentException {
         if(lastName == null || lastName.isEmpty()) {
             throw new IllegalArgumentException("Sorry, last name is mandatory. Please try again");
         }
@@ -95,7 +95,7 @@ public class Employee {
         return ssn;
     }
 
-    public final void setSsn(String ssn) {
+    public final void setSsn(String ssn) throws IllegalArgumentException {
         boolean valid = isSsnValid(ssn);
         if (valid == false) {
             throw new IllegalArgumentException("SSN in invalid format.");
